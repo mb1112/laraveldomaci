@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\StudentResource;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -9,19 +10,20 @@ class StudentController extends Controller
 {
     //moji kontroleri
     public function getAllStudents(){
-        return Student::all();
+        $students = Student::all();
+        return StudentResource::collection($students);
     }
 
     public function addStudent(){
         request() -> validate([
             'Ime' => 'required',
             'Prezime' => 'required',
-            'Broj indeksa' => 'required',
+            'BrojIndeksa' => 'required',
         ]);
         return Student::create([
             'Ime' => request('Ime'),
             'Prezime' => request('Prezime'),
-            'Broj indeksa' => request('Broj indeksa'),
+            'BrojIndeksa' => request('BrojIndeksa'),
         ]);
     }
 
@@ -29,13 +31,13 @@ class StudentController extends Controller
         request() -> validate([
             'Ime' => 'required',
             'Prezime' => 'required',
-            'Broj indeksa' => 'required',
+            'BrojIndeksa' => 'required',
         ]);
 
         $success = $student -> update([
             'Ime' => request('Ime'),
             'Prezime' => request('Prezime'),
-            'Broj indeksa' => request('Broj indeksa')
+            'BrojIndeksa' => request('BrojIndeksa')
         ]);
 
         return [
@@ -94,7 +96,8 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        
+    return new StudentResource($student);
     }
 
     /**
