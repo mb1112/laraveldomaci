@@ -23,7 +23,6 @@ Route::resource('students', StudentController::class);
 
  Route::post('/students', [StudentController::class, 'addStudent']);
 
- Route::put('/students/{student}', [StudentController::class, 'editStudent']);
 
  Route::delete('/students/{student}', [StudentController::class, 'deleteStudent']);
 
