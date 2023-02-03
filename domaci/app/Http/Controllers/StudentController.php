@@ -27,23 +27,7 @@ class StudentController extends Controller
         ]);
     }
 
-    public function editStudent(Student $student){
-        request() -> validate([
-            'Ime' => 'required',
-            'Prezime' => 'required',
-            'BrojIndeksa' => 'required',
-        ]);
-
-        $success = $student -> update([
-            'Ime' => request('Ime'),
-            'Prezime' => request('Prezime'),
-            'BrojIndeksa' => request('BrojIndeksa')
-        ]);
-
-        return [
-            'success' => $success
-        ];
-    }
+   
 
     public function deleteStudent(Student $student){
         $success = $student -> delete();

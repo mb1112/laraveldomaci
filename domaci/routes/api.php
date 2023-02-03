@@ -30,3 +30,5 @@ Route::resource('students', StudentController::class);
  Route::get('/ispits', [IspitController::class, 'getAllIspits']);
 
  Route::post('/ispits', [IspitController::class, 'addIspit']);
+
+ Route::delete('/ispits/{ispit}', [IspitController::class, 'deleteIspit']);
