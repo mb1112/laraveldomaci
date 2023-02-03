@@ -14,6 +14,7 @@ class CreateIspitsTable extends Migration
     public function up()
     {
         Schema::create('ispits', function (Blueprint $table) {
+           $table->id();
             $table->foreignId('predmet_id');
             $table->foreignId('student_id');
             $table->string('Rezultat');
